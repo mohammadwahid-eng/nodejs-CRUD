@@ -1,0 +1,27 @@
+<%- include('../partials/header'); %>
+
+    <div class="container my-5">
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h4 class="mb-3 text-primary">All Posts</h4>
+                <a href="/posts/create" class="btn btn-sm btn-outline-primary">Create new post</a>
+            </div>
+        </div>
+        <div class="row">
+            <% for( post of posts ) { %>
+                <div class="col-sm-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= post.title %></h5>
+                            <p class="card-text"><%= post.content %></p>
+                            <a href="/posts/<%= post.id %>/show" class="btn btn-sm btn-primary">View</a>
+                            <a href="/posts/<%= post.id %>/edit" class="btn btn-sm btn-info">Edit</a>
+                            <form action="/posts/<%= post.id %>/delete?_method=DELETE" method="POST" class="d-inline"><button type="submit" class="btn btn-sm btn-danger">Delete</button></form>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+<%- include('../partials/footer'); %>
